@@ -1,0 +1,22 @@
+{
+  "name": "algorithms-in-javascript",
+  "version": "1.0.0",
+  "description": "Computer Science algorithms in JavaScript",
+  "keywords": [
+    "algorithms",
+    "javascript",
+    "computer",
+    "science",
+    "sorting",
+    "merge",
+    "quick",
+    "sort",
+    "binary",
+    "bubble"
+  ],
+  "author": "Estevan Maito <ejmaito@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^4.6.3"
+  }
+}
