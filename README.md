@@ -34,12 +34,30 @@ node file-name.js
 
 Feel free to navigate around.
 
+#### Data Structures
+
+[Linked list](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/data-structures/linked-list.js)
+
+[Queue](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/data-structures/queue.js)
+
+[Stack](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/data-structures/stack.js)
+
+[Binary Search Tree](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/data-structures/binary-search-tree.js)
+
 #### Sorting
 
 [Insertion sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/insertion-sort.js)
 
 [Selection sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/selection-sort.js)
 
+[Merge sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/selection-sort.js)
+
+[Quick sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/selection-sort.js)
+
 #### Searching
 
 [Binary search](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/searching/binary-search.js)
+
+[Breadth-first search](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/searching/breadth-first-search.js)
+
+[Depth-first search](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/searching/depth-first-search.js)

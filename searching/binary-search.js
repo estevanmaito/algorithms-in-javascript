@@ -1,9 +1,9 @@
 // https://en.wikipedia.org/wiki/Binary_search_algorithm
 
 let binarySearch = (targetValue, array ) => {
-  let start = 0
-  let end = array.length - 1
-  let middle
+  let start = 0,
+      end = array.length - 1,
+      middle
 
   while (start <= end) {
     middle = Math.floor((start + end) / 2)
