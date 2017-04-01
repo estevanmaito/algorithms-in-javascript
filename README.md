@@ -4,7 +4,7 @@ IN PROGRESS
 
 Computer Science algorithms implemented in JavaScript, based mostly on these resources:
 
-- [MIT 6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/index.htm)
+- [MIT 6.006 - Introduction to Algorithms](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/index.htm)
 - [Introduction to Algorithms - 3rd Edition](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844)
 
 ## Usage
@@ -55,13 +55,13 @@ Feel free to navigate around.
 
 [Bubble sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/bubble-sort.js)
 
-[Insertion sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/insertion-sort.js)
-
 [Heap sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/heap-sort.js)
 
-[Selection sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/selection-sort.js)
+[Insertion sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/insertion-sort.js)
 
 [Merge sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/merge-sort.js)
+
+[Selection sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/selection-sort.js)
 
 [Quick sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/quick-sort.js)
 

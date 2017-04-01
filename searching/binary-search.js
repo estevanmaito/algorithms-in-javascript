@@ -1,15 +1,15 @@
 // https://en.wikipedia.org/wiki/Binary_search_algorithm
 
-let binarySearch = (targetValue, array ) => {
+let binarySearch = (targetValue, arr) => {
   let start = 0,
-      end = array.length - 1,
+      end = arr.length - 1,
       middle
 
   while (start <= end) {
     middle = Math.floor((start + end) / 2)
 
-    if (targetValue === array[middle]) return middle
-    else if (targetValue < array[middle]) end = middle - 1
+    if (targetValue === arr[middle]) return middle
+    else if (targetValue < arr[middle]) end = middle - 1
     else start = middle + 1
   }
   return -1
@@ -18,11 +18,11 @@ let binarySearch = (targetValue, array ) => {
 const test = require('tape')
 
 let generateSortedArray = (range) => {
-  let array = []
-  while (array.length < range) {
-    array.push(array.length + 1)
+  let arr = []
+  while (arr.length < range) {
+    arr.push(arr.length + 1)
   }
-  return array
+  return arr
 }
 
 test('Binary search', assert => {
