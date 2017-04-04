@@ -2,6 +2,7 @@
 
 function Node(data) {
   this.key = data
+  this.parent = null
   this.left = null
   this.right = null
 }
@@ -24,35 +25,64 @@ BST.prototype.insert = function (value) {
   if (current === null) this.root = node
   else if (node.key < current.key) current.left = node
   else current.right = node
+  node.parent = current
 }
 
 BST.prototype.delete = function (value) {
-  // Need help with this one, as most other languages implementations
-  // depend on the parent being stored in the node
-  // Is there another way of traversing the three in O(lg n) without
-  // that?
-  let current = this.root,
+  // Need help with this one
+  // What would be a good implementation:
+  // All these methods in the Node object
+  // or in the Tree object?
+  let current = this.search(value),
       parent = null,
       found = false
   
-  while (!found && current) {
-    parent = current
-    if (value < current.key) current = current.left
-    else if (value > current.key) current = current.right
-    else found = true
+  // while (!found && current) {
+  //   parent = current
+  //   if (value < current.key) current = current.left
+  //   else if (value > current.key) current = current.right
+  //   else found = true
+  // }
+
+  // if (!found) return
+
+  if (!current) return null
+
+  if (current === this.root) {
+    let pseudoRoot = new Node(0)
+    pseudoRoot.left = this.root
+    this.root.parent = pseudoRoot
+    let deleted = this.delete(this.root.key)
+    this.root = pseudoRoot.left
+    if (this.root) this.root.parent = null
+
+    return deleted
+  } else {
+    return this.delete(current)
   }
 
-  if (!found) return
-
   // delete a node with no children
-  // if (!current.left || !current.right) {
-  //   if (current === parent.left) {
-  //     parent.left = current.left || current.right
-  //     if (!parent.left) {
-  //       parent.left.parent = parent
-  //     }
-  //   }
-  // }
+  if (!current.left || !current.right) {
+    if (current === parent.left) {
+      parent.left = current.left || current.right
+      if (parent.left) {
+        parent.left.parent = parent
+      }
+    } else {
+      parent.right = current.left || current.right
+      if (parent.right) {
+        parent.right.parent = parent
+      }
+    }
+    return current
+  } else {
+    let s = this.sucessor(current.key),
+        temp = current.key
+    
+    current.key = s.key
+    s.key = temp
+    return this.delete(s.key)
+  }
 }
 
 BST.prototype.search = function (value) {
@@ -65,16 +95,34 @@ BST.prototype.search = function (value) {
   return null
 l}
 
-BST.prototype.min = function () {
-  let current = this.root.left
-  while (current.left) current = current.left
-  return current
+BST.prototype.min = function (node) {
+  while (node.left) node = node.left
+  return node
 }
 
-BST.prototype.max = function () {
-  let current = this.root.right
-  while (current.right) current = current.right
-  return current
+BST.prototype.max = function (node) {
+  while (node.right) node = node.right
+  return node
+}
+
+BST.prototype.sucessor = function(value) {
+  let current = this.search(value)
+  if (current.right) {
+    return this.min(current.right)
+  }
+  while (current.parent && current === current.parent.right)
+    current = current.parent
+  return current.parent
+}
+
+BST.prototype.predecessor = function(value) {
+  let current = this.search(value)
+  if (current.left) {
+    return this.max(current.left)
+  }
+  while (current.parent && current === current.parent.left)
+    current = current.parent
+  return current.parent
 }
 
 BST.prototype.length = function () {
@@ -110,9 +158,16 @@ test('BST', assert => {
   bst.insert(8)
   bst.insert(15)
   assert.deepEqual(bst.search(15).key, 15)
-  assert.deepEqual(bst.min().key, 4)
-  assert.deepEqual(bst.max().key, 15)
+  assert.deepEqual(bst.min(bst.root).key, 4)
+  assert.deepEqual(bst.max(bst.root).key, 15)
   assert.deepEqual(bst.toArray(), [4,8,12,15])
   assert.deepEqual(bst.length(), 4)
+  assert.deepEqual(bst.root.left.parent.key, 12)
+  assert.deepEqual(bst.sucessor(12).key, 15)
+  assert.deepEqual(bst.sucessor(8).key, 12)
+  assert.deepEqual(bst.sucessor(15), null)
+  assert.deepEqual(bst.predecessor(12).key, 8)
+  assert.deepEqual(bst.predecessor(8).key, 4)
+  assert.deepEqual(bst.predecessor(4), null)
   assert.end()
 })
