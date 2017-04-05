@@ -55,6 +55,8 @@ Feel free to navigate around.
 
 [Bubble sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/bubble-sort.js)
 
+[Counting sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/counting-sort.js)
+
 [Heap sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/heap-sort.js)
 
 [Insertion sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/insertion-sort.js)
