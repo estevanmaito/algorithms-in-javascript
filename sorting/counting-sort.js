@@ -1,25 +1,25 @@
-// Counting sort
+// https://en.wikipedia.org/wiki/Counting_sort
 
 let countingSort = (arr) => {
   let result = [],
-      counting = [],
+      count = [],
       maxArr = Math.max(...arr)
 
   for (let i = 0; i <= maxArr; i++) {
-    counting[i] = 0
+    count[i] = 0
   }
 
   for (let j = 0; j < arr.length; j++) {
-    counting[arr[j]] = counting[arr[j]] + 1
+    count[arr[j]] = count[arr[j]] + 1
   }
 
   for (let i = 1; i <= maxArr; i++) {
-    counting[i] = counting[i] + counting[i - 1]
+    count[i] = count[i] + count[i - 1]
   }
 
   for (let j = arr.length - 1; j >= 0; j--) {
-    counting[arr[j]] = counting[arr[j]] - 1
-    result[counting[arr[j]]] = arr[j]
+    count[arr[j]] = count[arr[j]] - 1
+    result[count[arr[j]]] = arr[j]
   }
 
   return result
