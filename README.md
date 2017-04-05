@@ -18,8 +18,8 @@ Computer Science algorithms implemented in JavaScript, based mostly on these res
 1. Clone and install dependencies
 
 ```
-git clone https://github.com/estevanmaito/algorithms-javascript
-cd algorithms-javascript
+git clone https://github.com/estevanmaito/algorithms-in-javascript
+cd algorithms-in-javascript
 npm install
 ```
 
