@@ -63,9 +63,11 @@ Feel free to navigate around.
 
 [Merge sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/merge-sort.js)
 
-[Selection sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/selection-sort.js)
-
 [Quick sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/quick-sort.js)
+
+[Radix sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/radix-sort.js)
+
+[Selection sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/selection-sort.js)
 
 #### Searching
 

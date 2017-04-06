@@ -17,6 +17,8 @@ let insertionSort = (array) => {
   return array
 }
 
+module.exports = insertionSort
+
 const test = require('tape')
 
 test('Insertion sort', assert => {
