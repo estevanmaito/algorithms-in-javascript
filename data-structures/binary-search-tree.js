@@ -35,6 +35,18 @@ BST.prototype.delete = function (value) {
   // or in the Tree object?
 }
 
+BST.prototype.transplant = function (u, v) {
+  if (!u.parent)
+    this.root = v
+  else if (u === u.parent.left)
+    u.parent.left = v
+  else
+    u.parent.right = v
+  if (v) {
+    v.parent = u.parent
+  }
+}
+
 BST.prototype.search = function (value) {
   let current = this.root
   while (current) {
