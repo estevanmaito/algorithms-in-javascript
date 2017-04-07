@@ -18,13 +18,19 @@ BST.prototype.insert = function (value) {
 
   while (x !== null) {
     current = x
-    if (node.key < x.key) x = x.left
-    else x = x.right
+    if (node.key < x.key)
+      x = x.left
+    else
+      x = x.right
   }
   
-  if (current === null) this.root = node
-  else if (node.key < current.key) current.left = node
-  else current.right = node
+  if (current === null)
+    this.root = node
+  else if (node.key < current.key)
+    current.left = node
+  else
+    current.right = node
+
   node.parent = current
 }
 
@@ -64,30 +70,38 @@ BST.prototype.transplant = function (u, v) {
 BST.prototype.search = function (value) {
   let current = this.root
   while (current) {
-    if (value === current.key) return current
-    else if (value < current.key) current = current.left
-    else current = current.right
+    if (value === current.key)
+      return current
+    else if (value < current.key)
+      current = current.left
+    else
+      current = current.right
   }
   return null
 }
 
 BST.prototype.min = function (node) {
-  while (node.left) node = node.left
+  while (node.left)
+    node = node.left
+
   return node
 }
 
 BST.prototype.max = function (node) {
-  while (node.right) node = node.right
+  while (node.right)
+    node = node.right
+
   return node
 }
 
 BST.prototype.sucessor = function(value) {
   let current = this.search(value)
-  if (current.right) {
+  if (current.right)
     return this.min(current.right)
-  }
+
   while (current.parent && current === current.parent.right)
     current = current.parent
+
   return current.parent
 }
 
@@ -95,8 +109,10 @@ BST.prototype.predecessor = function(value) {
   let current = this.search(value)
   if (current.left)
     return this.max(current.left)
+
   while (current.parent && current === current.parent.left)
     current = current.parent
+
   return current.parent
 }
 
