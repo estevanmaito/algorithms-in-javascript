@@ -29,10 +29,24 @@ BST.prototype.insert = function (value) {
 }
 
 BST.prototype.delete = function (value) {
-  // Need help with this one
-  // What would be a good implementation:
-  // All these methods in the Node object
-  // or in the Tree object?
+  let current = this.search(value)
+
+  if (!current.left)
+    this.transplant(current, current.right)
+  else if (!current.right)
+    this.transplant(current, current.left)
+  else {
+    let y = this.min(current.right)
+
+    if (y.parent !== current) {
+      this.transplant(y, y.right)
+      y.right = current.right
+      y.right.parent = y
+    }
+    this.transplant(current, y)
+    y.left = current.left
+    y.left.parent = y
+  }
 }
 
 BST.prototype.transplant = function (u, v) {
@@ -79,9 +93,8 @@ BST.prototype.sucessor = function(value) {
 
 BST.prototype.predecessor = function(value) {
   let current = this.search(value)
-  if (current.left) {
+  if (current.left)
     return this.max(current.left)
-  }
   while (current.parent && current === current.parent.left)
     current = current.parent
   return current.parent
@@ -131,5 +144,10 @@ test('BST', assert => {
   assert.deepEqual(bst.predecessor(12).key, 8)
   assert.deepEqual(bst.predecessor(8).key, 4)
   assert.deepEqual(bst.predecessor(4), null)
+  bst.delete(12)
+  assert.deepEqual(bst.search(12), null)
+  assert.deepEqual(bst.toArray(), [4,8,15])
+  assert.deepEqual(bst.root.left.parent.key, 15)
+  assert.deepEqual(bst.length(), 3)
   assert.end()
 })
