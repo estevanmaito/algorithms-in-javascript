@@ -6,8 +6,10 @@ let merge = (left, right) => {
       j = 0
 
   while (i < left.length && j < right.length) {
-    if (left[i] < right[j]) arr.push(left[i++])
-    else arr.push(right[j++])
+    if (left[i] < right[j])
+      arr.push(left[i++])
+    else
+      arr.push(right[j++])
   }
   
   return arr.concat(left.slice(i)).concat(right.slice(j))

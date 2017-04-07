@@ -3,19 +3,17 @@
 let insertionSort = require('./insertion-sort.js')
 
 let bucketSort = (arr) => {
-  let result = []
+  let result = [],
+      i
 
-  for (let i = 0; i < arr.length; i++) {
+  for (i = 0; i < arr.length; i++)
     result[i] = []
-  }
 
-  for (let i = 0; i < arr.length; i++) {
+  for (i = 0; i < arr.length; i++)
     result[Math.floor(arr[i] / 10)].push(arr[i])
-  }
 
-  for (let i = 0; i < arr.length; i++) {
+  for (i = 0; i < arr.length; i++)
     insertionSort(result[i])
-  }
 
   result = [].concat.apply([], result)
 

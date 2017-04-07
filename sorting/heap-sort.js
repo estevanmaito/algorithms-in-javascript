@@ -11,12 +11,12 @@ let maxHeapify = (arr, i, n) => {
       rigth = 2 * i + 2,
       largest = i
 
-  if (left < n && arr[left] > arr[i]) {
+  if (left < n && arr[left] > arr[i])
     largest = left
-  }
-  if (rigth < n && arr[rigth] > arr[largest]) {
+
+  if (rigth < n && arr[rigth] > arr[largest])
     largest = rigth
-  }
+
   if (largest !== i) {
     swap(arr, i, largest)
     maxHeapify(arr, largest, n)

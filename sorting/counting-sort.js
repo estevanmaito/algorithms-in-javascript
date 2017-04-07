@@ -3,21 +3,20 @@
 let countingSort = (arr) => {
   let result = [],
       count = [],
-      maxArr = Math.max(...arr)
+      maxArr = Math.max(...arr),
+      i,
+      j
 
-  for (let i = 0; i <= maxArr; i++) {
+  for (i = 0; i <= maxArr; i++)
     count[i] = 0
-  }
 
-  for (let j = 0; j < arr.length; j++) {
+  for (j = 0; j < arr.length; j++)
     count[arr[j]] = count[arr[j]] + 1
-  }
 
-  for (let i = 1; i <= maxArr; i++) {
+  for (i = 1; i <= maxArr; i++)
     count[i] = count[i] + count[i - 1]
-  }
 
-  for (let j = arr.length - 1; j >= 0; j--) {
+  for (j = arr.length - 1; j >= 0; j--) {
     count[arr[j]] = count[arr[j]] - 1
     result[count[arr[j]]] = arr[j]
   }

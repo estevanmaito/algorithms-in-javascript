@@ -33,56 +33,6 @@ BST.prototype.delete = function (value) {
   // What would be a good implementation:
   // All these methods in the Node object
   // or in the Tree object?
-  let current = this.search(value),
-      parent = null,
-      found = false
-  
-  // while (!found && current) {
-  //   parent = current
-  //   if (value < current.key) current = current.left
-  //   else if (value > current.key) current = current.right
-  //   else found = true
-  // }
-
-  // if (!found) return
-
-  if (!current) return null
-
-  if (current === this.root) {
-    let pseudoRoot = new Node(0)
-    pseudoRoot.left = this.root
-    this.root.parent = pseudoRoot
-    let deleted = this.delete(this.root.key)
-    this.root = pseudoRoot.left
-    if (this.root) this.root.parent = null
-
-    return deleted
-  } else {
-    return this.delete(current)
-  }
-
-  // delete a node with no children
-  if (!current.left || !current.right) {
-    if (current === parent.left) {
-      parent.left = current.left || current.right
-      if (parent.left) {
-        parent.left.parent = parent
-      }
-    } else {
-      parent.right = current.left || current.right
-      if (parent.right) {
-        parent.right.parent = parent
-      }
-    }
-    return current
-  } else {
-    let s = this.sucessor(current.key),
-        temp = current.key
-    
-    current.key = s.key
-    s.key = temp
-    return this.delete(s.key)
-  }
 }
 
 BST.prototype.search = function (value) {
@@ -93,7 +43,7 @@ BST.prototype.search = function (value) {
     else current = current.right
   }
   return null
-l}
+}
 
 BST.prototype.min = function (node) {
   while (node.left) node = node.left
