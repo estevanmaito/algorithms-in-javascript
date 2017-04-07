@@ -1,20 +1,20 @@
 // https://en.wikipedia.org/wiki/Insertion_sort
 
-let insertionSort = (array) => {
+let insertionSort = (arr) => {
   let u, // unsorted
       s, // sorted
       value
 
-  for (u = 1; u < array.length; u++) {
-    value = array[u]
+  for (u = 1; u < arr.length; u++) {
+    value = arr[u]
 
-    for (s = u - 1; s >= 0 && array[s] > value; s--) {
-      array[s + 1] = array[s]
+    for (s = u - 1; s >= 0 && arr[s] > value; s--) {
+      arr[s + 1] = arr[s]
     }
     
-    array[s + 1] = value
+    arr[s + 1] = value
   }
-  return array
+  return arr
 }
 
 module.exports = insertionSort

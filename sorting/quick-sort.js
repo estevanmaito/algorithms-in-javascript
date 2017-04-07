@@ -6,41 +6,42 @@ let swap = (arr, orig, dest) => {
   arr[dest] = temp
 }
 
-let partition = (arr) => {
-  let pivot = arr[arr.length - 1],
-      i = -1
+let partition = (arr, start, end) => {
+  let pivot = arr[end],
+      i = start - 1
 
-  for (let j = 0; j > arr.length - 2; j++) {
+  for (let j = start; j < end; j++) {
     if (arr[j] <= pivot) {
       i++
-      swap(arr, arr[i], arr[j])
+      swap(arr, i, j)
     }
   }
-  swap(arr, arr[i + 1], arr[arr.length - 1])
-  return arr
+  swap(arr, i + 1, end)
+  return i + 1
 }
 
-let quickSort = (arr) => {
-  if (arr.length > 1) {
-    let middle = partition(arr)
-    quickSort(arr.slice(0, middle))
-    quickSort(arr.slice(middle))
+let quickSort = (arr, start, end) => {
+  if (start < end) {
+    let middle = partition(arr, start, end)
+    quickSort(arr, start, middle - 1)
+    quickSort(arr, middle + 1, end)
   }
-
-  return arr
 }
 
 const test = require('tape')
 
 test('Partition', assert => {
-  assert.deepEqual(partition([2,8,7,1,3,5,6,4]), 0)
+  let arr = [2,8,7,1,3,5,6,4]
+  assert.deepEqual(partition(arr, 0, arr.length - 1), 3)
   assert.end()
 })
 
 test('Quick sort', assert => {
-  assert.deepEqual(quickSort([2, 4, 6, 5, 1, 3]), [1, 2, 3, 4, 5, 6])
-  assert.deepEqual([1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6])
-  assert.deepEqual(quickSort([-2, 4, 6, -5, 1, 3]), [-5, -2, 1, 3, 4, 6])
-  assert.deepEqual(quickSort([40, 12, 5, 34, 8, 35]), [5, 8, 12, 34, 35, 40])
+  let arr = [1, 4, 3, 5, 2]
+  quickSort(arr, 0, arr.length - 1)
+  assert.deepEqual(arr, [1,2,3,4,5])
+  arr = [2,8,7,1,3,5,6,4]
+  quickSort(arr, 0, arr.length - 1)
+  assert.deepEqual(arr, [1,2,3,4,5,6,7,8])
   assert.end()
 })

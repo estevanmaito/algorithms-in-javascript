@@ -43,17 +43,19 @@ Feel free to navigate around.
 
 #### Data Structures
 
+[Binary Search Tree](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/data-structures/binary-search-tree.js)
+
 [Linked list](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/data-structures/linked-list.js)
 
 [Queue](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/data-structures/queue.js)
 
 [Stack](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/data-structures/stack.js)
 
-[Binary Search Tree](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/data-structures/binary-search-tree.js)
-
 #### Sorting
 
 [Bubble sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/bubble-sort.js)
+
+[Bucket sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/bucket-sort.js)
 
 [Counting sort](https://github.com/estevanmaito/algorithms-in-javascript/tree/master/sorting/counting-sort.js)
 
