@@ -11,8 +11,8 @@ function LinkedList() {
 }
 
 LinkedList.prototype.add = function (value) {
-  let node = new Node(value)
-  current = this.head
+  let node = new Node(value),
+      current = this.head
 
   if (!current) {
     this.head = node
