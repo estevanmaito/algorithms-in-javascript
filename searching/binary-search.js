@@ -27,7 +27,7 @@ let generateSortedArray = (range) => {
 
 test('Binary search', assert => {
   assert.deepEqual(binarySearch(7, []), -1)
-  assert.deepEqual(binarySearch(2, [1,2,3,4,5]), 1)
+  assert.deepEqual(binarySearch(2, [1, 2, 3, 4, 5]), 1)
   assert.deepEqual(binarySearch(36, generateSortedArray(150)), 35)
   assert.deepEqual(binarySearch(981, generateSortedArray(10000)), 980)
   assert.end()

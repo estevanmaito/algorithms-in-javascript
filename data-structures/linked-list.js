@@ -10,7 +10,7 @@ function LinkedList() {
   this.head = null
 }
 
-LinkedList.prototype.add = function (value) {
+LinkedList.prototype.add = function(value) {
   let node = new Node(value),
       current = this.head
 
@@ -25,7 +25,7 @@ LinkedList.prototype.add = function (value) {
   return node
 }
 
-LinkedList.prototype.findAt = function (position) {
+LinkedList.prototype.findAt = function(position) {
   if (position > -1 && position < this.length) {
     let current = this.head
 
@@ -36,15 +36,15 @@ LinkedList.prototype.findAt = function (position) {
   return null
 }
 
-LinkedList.prototype.remove = function (position) {
+LinkedList.prototype.remove = function(position) {
   if (position > -1 && position < this.length) {
     let current = this.head
 
     if (position === 0) {
       current = current.next
     } else {
-      let i = 0
-      let previous
+      let i = 0,
+          previous
       while (i++ < position) {
         previous = current
         current = current.next

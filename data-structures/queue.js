@@ -6,15 +6,15 @@ function Queue() {
   this.items = {}
 }
 
-Queue.prototype.size = function () {
+Queue.prototype.size = function() {
   return this.rear - this.front
 }
 
-Queue.prototype.enqueue = function (value) {
+Queue.prototype.enqueue = function(value) {
   this.items[this.rear++] = value
 }
 
-Queue.prototype.dequeue = function () {
+Queue.prototype.dequeue = function() {
   if (this.rear === this.front) return undefined
   let front = this.items[this.front]
   delete this.items[this.front++]

@@ -17,6 +17,7 @@
   "author": "Estevan Maito <ejmaito@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^3.19.0",
     "tape": "^4.6.3"
   }
 }

@@ -5,11 +5,11 @@ function Stack() {
   this.items = {}
 }
 
-Stack.prototype.push = function (value) {
+Stack.prototype.push = function(value) {
   this.items[this.length++] = value
 }
 
-Stack.prototype.pop = function () {
+Stack.prototype.pop = function() {
   if (this.length === 0) return undefined
   let top = this.items[--this.length]
   delete this.items[this.length]

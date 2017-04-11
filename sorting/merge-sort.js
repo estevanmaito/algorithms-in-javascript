@@ -6,10 +6,11 @@ let merge = (left, right) => {
       j = 0
 
   while (i < left.length && j < right.length) {
-    if (left[i] < right[j])
+    if (left[i] < right[j]) {
       arr.push(left[i++])
-    else
+    } else {
       arr.push(right[j++])
+    }
   }
   
   return arr.concat(left.slice(i)).concat(right.slice(j))
@@ -29,8 +30,8 @@ let mergeSort = (arr) => {
 const test = require('tape')
 
 test('Merge sort', assert => {
-  assert.deepEqual(mergeSort([2,4,5,7,1,2,3,6]), [1,2,2,3,4,5,6,7])
-  assert.deepEqual(mergeSort([2,22,5,-3,4,9,3,6]), [-3,2,3,4,5,6,9,22])
+  assert.deepEqual(mergeSort([2, 4, 5, 7, 1, 2, 3, 6]), [1, 2, 2, 3, 4, 5, 6, 7])
+  assert.deepEqual(mergeSort([2, 22, 5, -3, 4, 9, 3, 6]), [-3, 2, 3, 4, 5, 6, 9, 22])
   assert.deepEqual(mergeSort([]), [])
   assert.deepEqual(mergeSort([1]), [1])
   assert.end()

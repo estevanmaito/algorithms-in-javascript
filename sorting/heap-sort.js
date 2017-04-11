@@ -11,11 +11,13 @@ let maxHeapify = (arr, i, n) => {
       rigth = 2 * i + 2,
       largest = i
 
-  if (left < n && arr[left] > arr[i])
+  if (left < n && arr[left] > arr[i]) {
     largest = left
+  }
 
-  if (rigth < n && arr[rigth] > arr[largest])
+  if (rigth < n && arr[rigth] > arr[largest]) {
     largest = rigth
+  }
 
   if (largest !== i) {
     swap(arr, i, largest)
@@ -46,9 +48,9 @@ const test = require('tape')
 // test('maxHeapify', assert => {
 //   assert.deepEqual(maxHeapify([27,17,3,16,13,10,1,5,7,12,4,8,9,0], 2),
 //                               [27,17,10,16,13,9,1,5,7,12,4,8,3,0])
-//   assert.deepEqual(maxHeapify([16,4,10,14,7,9,3,2,8,1], 1), 
+//   assert.deepEqual(maxHeapify([16,4,10,14,7,9,3,2,8,1], 1),
 //                               [16,14,10,8,7,9,3,2,4,1])
-//   assert.deepEqual(maxHeapify([16,14,10,8,1,9,3,2,4,7], 4), 
+//   assert.deepEqual(maxHeapify([16,14,10,8,1,9,3,2,4,7], 4),
 //                               [16,14,10,8,7,9,3,2,4,1])
 //   assert.end()
 // })
@@ -60,7 +62,7 @@ const test = require('tape')
 // })
 
 test('heapSort', assert => {
-  assert.deepEqual(heapSort([4,1,3,2,16,9,10,14,8,7]),
-                            [1,2,3,4,7,8,9,10,14,16])
+  assert.deepEqual(heapSort([4, 1, 3, 2, 16, 9, 10, 14, 8, 7]),
+                            [1, 2, 3, 4, 7, 8, 9, 10, 14, 16])
   assert.end()
 })

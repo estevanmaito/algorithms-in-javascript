@@ -50,7 +50,7 @@ DoublyLinkedList.prototype.remove = function(position) {
   return toRemove
 }
 
-DoublyLinkedList.prototype.findAt = function (position) {
+DoublyLinkedList.prototype.findAt = function(position) {
   if (position > -1 && position < this.length) {
     let current = this.head
 
@@ -87,11 +87,12 @@ test('Doubly linked list findAt', assert => {
 })
 
 test('Doubly linked list remove', assert => {
-  let dl = new DoublyLinkedList()
+  let dl = new DoublyLinkedList(),
+      removed
   dl.add('Hello world!')
   dl.add('Can you see me?')
   dl.add('Now you don\'t')
-  let removed = dl.remove(2)
+  removed = dl.remove(2)
   assert.deepEqual(dl.tail.data, 'Can you see me?')
   assert.deepEqual(removed.data, 'Hello world!')
   assert.deepEqual(2, dl.length)

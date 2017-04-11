@@ -11,37 +11,38 @@ function BST() {
   this.root = null
 }
 
-BST.prototype.insert = function (value) {
+BST.prototype.insert = function(value) {
   let node = new Node(value),
       current = null,
       x = this.root
 
   while (x !== null) {
     current = x
-    if (node.key < x.key)
+    if (node.key < x.key) {
       x = x.left
-    else
+    } else {
       x = x.right
+    }
   }
   
-  if (current === null)
+  if (current === null) {
     this.root = node
-  else if (node.key < current.key)
+  } else if (node.key < current.key) {
     current.left = node
-  else
+  } else {
     current.right = node
-
+  }
   node.parent = current
 }
 
-BST.prototype.delete = function (value) {
+BST.prototype.delete = function(value) {
   let current = this.search(value)
 
-  if (!current.left)
+  if (!current.left) {
     this.transplant(current, current.right)
-  else if (!current.right)
+  } else if (!current.right) {
     this.transplant(current, current.left)
-  else {
+  } else {
     let y = this.min(current.right)
 
     if (y.parent !== current) {
@@ -55,84 +56,95 @@ BST.prototype.delete = function (value) {
   }
 }
 
-BST.prototype.transplant = function (u, v) {
-  if (!u.parent)
+BST.prototype.transplant = function(u, v) {
+  if (!u.parent) {
     this.root = v
-  else if (u === u.parent.left)
+  } else if (u === u.parent.left) {
     u.parent.left = v
-  else
+  } else {
     u.parent.right = v
+  }
   if (v) {
     v.parent = u.parent
   }
 }
 
-BST.prototype.search = function (value) {
+BST.prototype.search = function(value) {
   let current = this.root
   while (current) {
-    if (value === current.key)
+    if (value === current.key) {
       return current
-    else if (value < current.key)
+    } else if (value < current.key) {
       current = current.left
-    else
+    } else {
       current = current.right
+    }
   }
+
   return null
 }
 
-BST.prototype.min = function (node) {
-  while (node.left)
+BST.prototype.min = function(node) {
+  while (node.left) {
     node = node.left
+  }
 
   return node
 }
 
-BST.prototype.max = function (node) {
-  while (node.right)
+BST.prototype.max = function(node) {
+  while (node.right) {
     node = node.right
+  }
 
   return node
 }
 
 BST.prototype.sucessor = function(value) {
   let current = this.search(value)
-  if (current.right)
+  if (current.right) {
     return this.min(current.right)
+  }
 
-  while (current.parent && current === current.parent.right)
+  while (current.parent && current === current.parent.right) {
     current = current.parent
+  }
 
   return current.parent
 }
 
 BST.prototype.predecessor = function(value) {
   let current = this.search(value)
-  if (current.left)
+  if (current.left) {
     return this.max(current.left)
+  }
 
-  while (current.parent && current === current.parent.left)
+  while (current.parent && current === current.parent.left) {
     current = current.parent
+  }
 
   return current.parent
 }
 
-BST.prototype.length = function () {
+BST.prototype.length = function() {
   let count = 0
   this.inorderTreeWalk(this.root, function() {
     count++
   })
+
   return count
 }
 
-BST.prototype.toArray = function () {
+BST.prototype.toArray = function() {
   let result = []
   this.inorderTreeWalk(this.root, function(key) {
     result.push(key)
   })
+
   return result
 }
 
-BST.prototype.inorderTreeWalk = function (node, callback) {
+BST.prototype.inorderTreeWalk = function(node, callback) {
   if (node) {
     this.inorderTreeWalk(node.left, callback)
     callback(node.key)
@@ -151,7 +163,7 @@ test('BST', assert => {
   assert.deepEqual(bst.search(15).key, 15)
   assert.deepEqual(bst.min(bst.root).key, 4)
   assert.deepEqual(bst.max(bst.root).key, 15)
-  assert.deepEqual(bst.toArray(), [4,8,12,15])
+  assert.deepEqual(bst.toArray(), [4, 8, 12, 15])
   assert.deepEqual(bst.length(), 4)
   assert.deepEqual(bst.root.left.parent.key, 12)
   assert.deepEqual(bst.sucessor(12).key, 15)
@@ -162,7 +174,7 @@ test('BST', assert => {
   assert.deepEqual(bst.predecessor(4), null)
   bst.delete(12)
   assert.deepEqual(bst.search(12), null)
-  assert.deepEqual(bst.toArray(), [4,8,15])
+  assert.deepEqual(bst.toArray(), [4, 8, 15])
   assert.deepEqual(bst.root.left.parent.key, 15)
   assert.deepEqual(bst.length(), 3)
   assert.end()
