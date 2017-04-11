@@ -38,6 +38,10 @@ BST.prototype.insert = function(value) {
 BST.prototype.delete = function(value) {
   let current = this.search(value)
 
+  if (!current) {
+    return null
+  }
+
   if (!current.left) {
     this.transplant(current, current.right)
   } else if (!current.right) {
@@ -54,6 +58,8 @@ BST.prototype.delete = function(value) {
     y.left = current.left
     y.left.parent = y
   }
+
+  return current
 }
 
 BST.prototype.transplant = function(u, v) {
@@ -154,28 +160,116 @@ BST.prototype.inorderTreeWalk = function(node, callback) {
 
 const test = require('tape')
 
-test('BST', assert => {
+test('BST insert', assert => {
   let bst = new BST()
   bst.insert(12)
   bst.insert(4)
   bst.insert(8)
   bst.insert(15)
-  assert.deepEqual(bst.search(15).key, 15)
-  assert.deepEqual(bst.min(bst.root).key, 4)
-  assert.deepEqual(bst.max(bst.root).key, 15)
-  assert.deepEqual(bst.toArray(), [4, 8, 12, 15])
-  assert.deepEqual(bst.length(), 4)
-  assert.deepEqual(bst.root.left.parent.key, 12)
-  assert.deepEqual(bst.sucessor(12).key, 15)
-  assert.deepEqual(bst.sucessor(8).key, 12)
-  assert.deepEqual(bst.sucessor(15), null)
-  assert.deepEqual(bst.predecessor(12).key, 8)
-  assert.deepEqual(bst.predecessor(8).key, 4)
-  assert.deepEqual(bst.predecessor(4), null)
-  bst.delete(12)
-  assert.deepEqual(bst.search(12), null)
-  assert.deepEqual(bst.toArray(), [4, 8, 15])
-  assert.deepEqual(bst.root.left.parent.key, 15)
-  assert.deepEqual(bst.length(), 3)
+  assert.deepEqual(bst.length(), 4, 'length should be 4')
+  assert.end()
+})
+
+test('BST delete', assert => {
+  let bst = new BST()
+  bst.insert(12)
+  bst.insert(4)
+  bst.insert(8)
+  bst.insert(15)
+  assert.deepEqual(bst.delete(2), null, 'should return null')
+  assert.deepEqual(bst.delete(8).key, 8, 'should return 8')
+  assert.deepEqual(bst.length(), 3, 'length should be 3')
+  assert.end()
+})
+
+test('BST transplant', assert => {
+  let bst = new BST(),
+      el1,
+      el2
+  bst.insert(12)
+  bst.insert(4)
+  bst.insert(8)
+  bst.insert(15)
+  el1 = bst.search(4)
+  el2 = bst.search(8)
+  assert.deepEqual(el2.parent.key, 4, '8 parent´s should be 4')
+  bst.transplant(el1, el2)
+  assert.deepEqual(el2.parent.key, 12, '8 parent´s should be 12')
+  assert.end()
+})
+
+test('BST search', assert => {
+  let bst = new BST()
+  bst.insert(12)
+  bst.insert(4)
+  bst.insert(8)
+  bst.insert(15)
+  assert.deepEqual(bst.search(8).key, 8, 'should find element with key 8')
+  assert.deepEqual(bst.search(2), null, 'should return null if not found')
+  assert.end()
+})
+
+test('BST min', assert => {
+  let bst = new BST()
+  bst.insert(12)
+  bst.insert(4)
+  bst.insert(8)
+  bst.insert(2)
+  assert.deepEqual(bst.min(bst.root).key, 2, 'should return min element')
+  assert.end()
+})
+
+test('BST max', assert => {
+  let bst = new BST()
+  bst.insert(12)
+  bst.insert(4)
+  bst.insert(8)
+  bst.insert(15)
+  assert.deepEqual(bst.max(bst.root).key, 15, 'should return max element')
+  assert.end()
+})
+
+test('BST sucessor', assert => {
+  let bst = new BST()
+  bst.insert(12)
+  bst.insert(4)
+  bst.insert(8)
+  bst.insert(15)
+  assert.deepEqual(bst.sucessor(12).key, 15, 'should return 15, sucessor for 12')
+  assert.deepEqual(bst.sucessor(15), null, 'should return null if not found')
+  assert.end()
+})
+
+test('BST predecessor', assert => {
+  let bst = new BST()
+  bst.insert(12)
+  bst.insert(4)
+  bst.insert(8)
+  bst.insert(15)
+  assert.deepEqual(bst.predecessor(12).key, 8, 'should return 8, predecessor for 12')
+  assert.deepEqual(bst.predecessor(4), null, 'should return null if not found')
+  assert.end()
+})
+
+test('BST length', assert => {
+  let bst = new BST()
+  bst.insert(12)
+  bst.insert(4)
+  bst.insert(8)
+  bst.insert(15)
+  assert.deepEqual(bst.length(), 4, 'should return length 4')
+  bst.insert(21)
+  bst.insert(13)
+  assert.deepEqual(bst.length(), 6, 'should return length 6')  
+  assert.end()
+})
+
+test('BST toArray', assert => {
+  let bst = new BST()
+  bst.insert(4)
+  bst.insert(8)
+  bst.insert(15)
+  assert.deepEqual(bst.toArray(), [4, 8, 15], 'should return array representation of bst')
+  assert.deepEqual(Array.isArray(bst.toArray()), true, 'should return an array')
   assert.end()
 })
