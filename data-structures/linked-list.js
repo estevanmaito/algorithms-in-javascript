@@ -17,7 +17,9 @@ LinkedList.prototype.add = function(value) {
   if (!current) {
     this.head = node
   } else {
-    while (current.next) current = current.next
+    while (current.next) {
+      current = current.next
+    }
     current.next = node
   }
   this.length++
