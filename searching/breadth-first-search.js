@@ -4,7 +4,7 @@ const Queue = require('../data-structures/queue.js')
 
 let BFS = (graph, source, value) => {
   let queue = new Queue(),
-      searched = []
+      searched = {}
       
   queue.enqueue(source)
 
@@ -12,7 +12,7 @@ let BFS = (graph, source, value) => {
     let current = queue.dequeue()
     
     for (let i = 0; i < graph[current].length; i++) {
-      if (!searched.includes(graph[current][i])) {
+      if (!searched[graph[current][i]]) {
         if (graph[current][i] === value) {
           return true
         } else {
@@ -20,7 +20,7 @@ let BFS = (graph, source, value) => {
         }
       }
     }
-    searched.push(current)
+    searched[current] = true
   }
 
   return false
