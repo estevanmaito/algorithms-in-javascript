@@ -22,6 +22,8 @@ Queue.prototype.dequeue = function() {
   return front
 }
 
+module.exports = Queue
+
 const test = require('tape')
 
 test('Queue enqueue', assert => {
